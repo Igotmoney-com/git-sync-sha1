@@ -1,0 +1,39 @@
+- name: OpenShift Self Hosted Runner Installer
+  # You may pin to the exact commit or the version.
+  # uses: redhat-actions/openshift-actions-runner-installer@8b4d88c1808ced3a39fd0e43f9ce038163fad8a8
+  uses: redhat-actions/openshift-actions-runner-installer@v1
+  with:
+    # GitHub Personal access token. The token must have the "repo" permission scope.
+For organization runners, the token must also have the "admin:org" scope.
+
+    github_pat: 
+    # Repository or organization for the self-hosted runner.
+For example, "redhat-actions/check-self-hosted-runner" for a repository, or "redhat-actions" for an organization.
+Defaults to the current repository.
+
+    runner_location: # optional
+    # Container image to use for the runner.
+    runner_image: # optional
+    # Tag to use for the runner container image.
+    runner_tag: # optional
+    # Labels in the runners to check for.
+For multiple labels, separate by comma and an optional space. For example, "label1, label2".
+
+    runner_labels: # optional
+    # Number of runner replicas to create.
+    runner_replicas: # optional, default is 1
+    # Optional namespace (aka project) to pass to all Helm or Kubernetes commands.
+
+    namespace: # optional
+    # Uninstall any release that matches the `helm_release_name` and `namespace` before running `helm install`.
+If this is false, and the release exists, the action will fail when the `helm install` fails.
+
+    helm_uninstall_existing: # optional, default is true
+    # The Helm Release name to give the new runner release. Defaults to the repository or org name plus "-runners".
+    helm_release_name: # optional
+    # Any other arguments to pass to the 'helm install' command.
+Separate arguments by newline. Do not use quotes - @actions/exec will do the quoting for you.
+
+    helm_extra_args: # optional
+    # Version of our Helm Chart to install. Defaults to the latest.
+    helm_chart_version: # optional
